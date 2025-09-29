@@ -22,6 +22,6 @@ jobs:
           image-ref: $IMAGE_NAME:latest
           format: table
           ignore-unfixed: true
-          vuln-type: 'os, library'
-          severity: HIGH,CRITICAL
+          vuln-type: 'os,library'
+          severity: 'HIGH,CRITICAL'
           exit-code: 1
