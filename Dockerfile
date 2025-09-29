@@ -11,7 +11,7 @@ COPY src/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Release build
-FROM gcr.io/distroless/python3-debian11
+FROM gcr.io/distroless/python3-debian12
 WORKDIR /app
 
 # Copy over files from build stage

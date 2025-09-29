@@ -1,0 +1,27 @@
+name: scan-app
+on: 
+  push:
+    branches: [main, master]
+jobs:
+  build-image:
+    name: Build and scan Docker image
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: flask-web-app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t $IMAGE_NAME:latest .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          scan-type: image
+          image-ref: $IMAGE_NAME:latest
+          format: table
+          ignore-unfixed: true
+          vuln-type: 'os, library'
+          severity: HIGH,CRITICAL
+          exit-code: 1
