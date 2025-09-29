@@ -19,7 +19,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: image
-          image-ref: $IMAGE_NAME:latest
+          image-ref: '$IMAGE_NAME:latest'
           format: table
           ignore-unfixed: true
           vuln-type: 'os,library'
